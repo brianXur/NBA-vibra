@@ -9,7 +9,7 @@ export function getStaticPaths() {
 }
 
 const {Jugador, Equipo} = Astro.params;
-const filterEquipo = equipos.find(({name}) => name.toLowerCase() === Equipo)
+const filterEquipo = equipos.find(({name}) => name.toUpperCase() === Equipo.toUpperCase())
 const filterPlayer = players.find(({trim}) => trim.toLowerCase() === Jugador.toLowerCase())
 const img = filterEquipo?.logo ?? logoEquipos
 ---
