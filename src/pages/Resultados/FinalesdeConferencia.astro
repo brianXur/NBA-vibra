@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PlayoffFace from "../../components/PlayoffFace.astro"
+import BackHome from "../../components/BackHome.astro";
 
 const playoffEast = [
 {
@@ -34,11 +35,7 @@ const playoffWest = [
 ---
 <Layout title="Finales De Conferencia">
   <header class="relative">
-    <a href="/Resultados" class="p-4 absolute left-0 top-0 ">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-      </svg>
-    </a>
+    <BackHome href=`/Resultados`/>
     <h1 class="text-5xl font-semibold text-center pb-10 pt-2">Resultados de las Finales De Conferencia</h1>
   </header>
   <main class="grid grid-cols-2">

@@ -117,7 +117,7 @@ export const equipos = [
     camisetaCorta:
       "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/367f785a-df93-4780-b35d-dde775bdb3fc/atlanta-hawks-icon-edition-2022-23-camiseta-dri-fit-nba-swingman-SQkz62.png",
     camisetaLarga:
-      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/1f5a55f2-6589-4c2b-a485-0b97acf6086c/atlanta-hawks-city-edition-camiseta-nba-b44gFL.png",
+      "https://images.footballfanatics.com/atlanta-hawks/atlanta-hawks-nike-icon-name-and-number-t-shirt-trae-young-mens_ss4_p-13374227+pv-1+u-judxr47ak17f04h2bdq0+v-3d5e40294dff49afa888eb67f82f1773.jpg?_hv=2&w=900",
     chaqueta:
       "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c27db090-6b9e-4c6b-989f-1edfffbcf590/atlanta-hawks-club-sudadera-con-capucha-de-la-nba-VwTR14.png",
     pantalon:

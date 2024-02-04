@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { equipos } from "../../const/navegacion";
 import Layout from "../../layouts/Layout.astro";
 import logoEquipos from "../../images/logoequipos.webp";
+import Backhome from "../../components/BackHome.astro"
 export function getStaticPaths() {
   return equipos.map(({name}) => ({params: {Equipo: name}}));
 }
@@ -21,11 +22,7 @@ const pantalonLargo = filterEquipo?.pantalonLargo ?? ``
 
 <Layout title={Equipo}>
   <header class="flex flex-col items-center justify-center gap-4 p-10 relative">
-    <a href="/Equipacion" class="p-4 absolute left-0 top-0 ">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-    </svg>
-  </a>
+    <Backhome href="/Equipacion"/>
     <h1 class="text-3xl font-semibold">{Equipo}</h1>
     <Image class="size-32 object-contain" src={img} alt={`logo de el equipo ${Equipo}`}/>
   </header>

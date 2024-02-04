@@ -15,7 +15,7 @@ import { equipos } from "../const/navegacion";
     <p class="justify-center flex text-3xl capitalize">ESTE</p>
     <p class="justify-center flex text-3xl capitalize">OESTE</p>
     {equipos.map(({name, logo}) => (
-      <a class="flex flex-col items-center justify-center bg-slate-800 rounded-xl p-5 font-semibold" href={`${name.trim().replace(" ", '').toLowerCase()}`}>
+      <a class="flex flex-col items-center justify-center bg-slate-800 rounded-xl p-5 font-semibold" href={`/Equipos/${name.trim().replace(" ", '').toLowerCase()}`}>
         <div>{name}</div>
         <Image class="h-32 w-32 object-contain" src={logo} alt={`logo de el equipo ${name}`}/>
       </a>
