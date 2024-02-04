@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import { equipos, players } from "../../../const/navegacion";
+import Layout from "../../../layouts/Layout.astro";
+import logoEquipos from "../../../images/logoequipos.webp";
+export function getStaticPaths() {  
+  return players.map(({trim, equipo}) => ({params: {Jugador: trim, Equipo: equipo.toLowerCase()}}));
+}
+
+const {Jugador, Equipo} = Astro.params;
+const filterEquipo = equipos.find(({name}) => name.toLowerCase() === Equipo)
+const filterPlayer = players.find(({trim}) => trim.toLowerCase() === Jugador.toLowerCase())
+const img = filterEquipo?.logo ?? logoEquipos
+---
+
+<Layout title={Jugador + '-' + filterPlayer?.equipo}>
+  <header class="flex flex-col items-center justify-center gap-4 p-10 relative">
+    <a href=`/Jugadores/${filterPlayer?.equipo.toUpperCase()}` class="p-4 absolute left-0 top-0 ">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+    </svg>
+  </a>
+    <h1 class="text-3xl font-semibold">{filterPlayer?.equipo.toUpperCase()}</h1>
+    <Image class="size-32 object-contain" src={img} alt={`logo de el equipo ${filterPlayer?.equipo}`}/>
+  </header>
+  <section class="grid grid-cols-3 grid-rows-2 p-4 gap-4">
+    <div class="flex flex-col row-span-2 items-center justify-center rounded-2xl bg-slate-800 px-4 pt-4"> 
+      <h1 class="text-center text-5xl font-bold">{filterPlayer?.trim}</h1>
+    <img class="w-auto h-96 object-contain rounded-2xl" src={filterPlayer?.playerPicture} />
+  </div>
+    <div class="rounded-2xl bg-slate-800 p-4 flex flex-col items-center justify-center text-xl">
+      <p class="font-bold text-2xl">{filterPlayer?.paisNacimiento}</p>
+      <p class="font-semibold">{filterPlayer?.estadoNacimiento}</p>
+      <p>{filterPlayer?.ciudadNacimiento}</p>
+      <p>{filterPlayer?.fechaNacimiento}</p>
+    </div>
+    <div class="rounded-2xl bg-slate-800 p-4 flex flex-col items-center justify-center text-xl">
+      <p class="text-3xl">{`Edad: ${filterPlayer?.edad}`}</p>
+      <p class="text-3xl">{`Altura: ${filterPlayer?.altura}`}</p>
+      <p class="text-3xl">{`Posición: ${filterPlayer?.posicion}`}</p>
+    </div>
+    <div class="rounded-2xl bg-slate-800 p-4 grid grid-cols-2 text-xl items-center">
+      <div class="flex flex-col items-center">
+      <p class="text-4xl  pb-12">Palmarés</p>
+      <p class="text-center">{filterPlayer?.palmares}</p>
+    </div>
+    <div class="flex flex-row justify-end">
+      <img class="w-32 h-40 object-contain " src="https://png2.cleanpng.com/sh/14b3f929821a10ac0db93862de1ae654/L0KzQYm3U8I5N5ttiZH0aYP2gLBuTcIxOWcyhtRqLXbsfrLzk71vaaVuh9DqbD3lccTyhgRjaZ1xRdN8c3BmebL7if9vNZJ8Rel4cnznPbT8kL02aZNnUdU7Y3PpQ7bqUL41P2E8T6s7M0G4QoO5VMQ3PWM9TKoELoDxd1==/kisspng-2016-nba-finals-national-basketball-association-aw-world-cup-5abb9c2ccf3ec0.4707792315222446528489.png"/>
+    </div>
+    </div>
+    <div class="rounded-2xl bg-slate-800 p-4 flex flex-col items-center justify-center text-xl">
+      <h1 class="text-4xl  pb-12">Dorsal</h1>
+      <p class="text-2xl">#{filterPlayer?.dorsal}</p>
+    </div>
+  </section>
+</Layout>

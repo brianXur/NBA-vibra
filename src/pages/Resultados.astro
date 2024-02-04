@@ -1,0 +1,34 @@
+---
+import NavBar from "../components/NavBar.astro";
+import Layout from "../layouts/Layout.astro";
+import logoResultados from "../images/logoresultados.webp";
+import finalesDeConferencia from "../images/finaldeconferencia.jpg";
+import semifinalesDeConferencia from "../images/semifinalesdeconferencia.jpg";
+import final from "../images/final.jpg";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Resultados">
+  <header class="flex flex-col justify-center items-center p-4 gap-4">
+    <NavBar/>
+    <h1 class="text-5xl font-semibold">RESULTADOS</h1>
+  </header>
+  <section class="flex flex-row flex-wrap gap-7 justify-center pt-4">
+        <a class="relative flex items-center justify-center h-[280px] w-[500px]" href={'/Resultados/PrimeraRondaEliminatoria'}>
+          <Image src={logoResultados} alt={`logo de Primera Ronda Eliminatoria`} class="object-cover h-[280px] w-[500px]" title={'Primera Ronda Eliminatoria'}/>
+          <div class="text-cyan-900 opacity-0 hover:opacity-100 duration-300 bg-white hover:bg-opacity-70 absolute inset-0 z-10 flex justify-center items-center text-4xl font-semibold">Primera Ronda Eliminatoria</div>
+        </a>
+        <a class="relative flex items-center justify-center h-[280px] w-[500px]" href={'/Resultados/SemifinalesDeConferencia'}>
+          <Image src={semifinalesDeConferencia} alt={`logo de Semifinales De Conferencia`} class="object-contain h-[280px] w-[500px]" title={'Semifinales De Conferencia'}/>
+          <div class="text-cyan-900 opacity-0 hover:opacity-100 duration-300 bg-white hover:bg-opacity-70 absolute inset-0 z-10 flex justify-center items-center text-4xl font-semibold">Semifinales De Conferencia</div>
+        </a>
+        <a class="relative flex items-center justify-center h-[280px] w-[500px]" href={'/Resultados/FinalesdeConferencia'}>
+          <Image src={finalesDeConferencia} alt={`logo de Finales De Conferencia`} class="object-cover h-[280px] w-[500px]" title={'Finales De Conferencia'}/>
+          <div class="text-cyan-900 opacity-0 hover:opacity-100 duration-300 bg-white hover:bg-opacity-70 absolute inset-0 z-10 flex justify-center items-center text-5xl font-semibold">Finales De Conferencia</div>
+        </a>
+        <a class="relative flex items-center justify-center h-[280px] w-[500px]" href={'/Resultados/Final'}>
+          <Image src={final} alt={`logo de Final`} class="object-cover h-[280px] w-[500px]" title={'Final'}/>
+          <div class="text-cyan-900 opacity-0 hover:opacity-100 duration-300 bg-white hover:bg-opacity-70 absolute inset-0 z-10 flex justify-center items-center text-5xl font-semibold">Final</div>
+        </a>
+  </section>
+</Layout>

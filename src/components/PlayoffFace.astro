@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import { equipos } from "../const/navegacion";
+import logoResultados from "../images/logoresultados.webp";
+
+interface gamesP {
+    resultTeam1: string,
+    resultTeam2: string,
+    gameNumber: number
+  }
+interface Props {
+  team1: string,
+  team2: string,
+  resultTeam1?: number,
+  resultTeam2?: number,
+  games:gamesP[]
+}
+
+const {team1, team2, resultTeam1, resultTeam2, games} = Astro.props;
+const equiposInfo = equipos.map(({ name, logo }) => ({ name, logo }));
+---
+<div class="bg-slate-800 rounded-xl w-80">
+  <div class="flex flex-row gap-4 items-center justify-center py-4">
+    <div  class="flex flex-col items-center">
+    <Image class="h-32 w-32 object-contain" src={equiposInfo.find(({name}) => name === team1.toUpperCase())?.logo ?? logoResultados} alt={`logo of ${team1}`}/>  
+      {resultTeam1}
+    </div>
+    <p>Vs</p>
+    <div class="flex flex-col items-center">
+    <Image class="h-32 w-32 object-contain" src={equiposInfo.find(({name}) => name === team2.toUpperCase())?.logo ?? logoResultados} alt={`logo of ${team2}`}/>    
+      {resultTeam2}
+    </div>
+  </div>
+  <div class="text-center">       
+    {games.map(({ resultTeam1, resultTeam2}) => (
+        <p class="pb-2">{`${resultTeam1}-${resultTeam2}`}</p>
+    ))}        
+  </div>
+</div>

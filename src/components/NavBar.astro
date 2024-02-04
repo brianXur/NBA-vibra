@@ -1,0 +1,10 @@
+---
+import { espacios } from "../const/navegacion";
+
+---
+<nav class="bg-teal-600 rounded-full px-3" >
+  <ul class="flex flex-row gap-4">
+    <a class="hover:text-cyan-200" href="/">Inicio</a>
+    {espacios.map(({href, name}) => <a class="hover:text-cyan-200" href={href}>{name}</a>)}
+  </ul>
+</nav>

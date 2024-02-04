@@ -1,0 +1,58 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PlayoffFace from "../../components/PlayoffFace.astro"
+
+const playoffEast = [
+{
+team1: "Boston Celtics",
+    team2: "Miami Heat",
+    resultTeam1: 2, resultTeam2: 8 ,
+    games: [
+  { gameNumber: 1, resultTeam1: 'Celtics 116', resultTeam2: 'Heat 123 (0-1)' },
+  { gameNumber: 2, resultTeam1: 'Celtics 105', resultTeam2: 'Heat 111 (0-2)' },
+  { gameNumber: 3, resultTeam1: 'Heat 128', resultTeam2: 'Celtics 102 (3-0)' },
+  { gameNumber: 4, resultTeam1: ' Heat 99', resultTeam2: 'Celtics 116 (3-1)' },
+  { gameNumber: 5, resultTeam1: 'Celtics 110', resultTeam2: 'Heat 97 (2-3)' },
+  { gameNumber: 6, resultTeam1: 'Heat 103', resultTeam2: 'Celtics 104 (3-3)' },
+  { gameNumber: 7, resultTeam1: 'Celtics 84', resultTeam2: 'Heat 103 (3-4)'}
+]}]
+;
+
+const playoffWest = [
+{
+    team1: "Denver Nuggets",
+    team2: "Los Angeles Lakers",
+    resultTeam1: 1, resultTeam2: 7 ,
+    games: [
+      { gameNumber: 1, resultTeam1: "Nuggets 132", resultTeam2: "Lakers 126 (1-0)" },
+      { gameNumber: 2, resultTeam1: "Nuggets 108", resultTeam2: "Lakers 103 (2-0)" },
+      { gameNumber: 3, resultTeam1: "Lakers 108", resultTeam2: "Nuggets 119 (3-0)" },
+      { gameNumber: 4, resultTeam1: "Lakers 111", resultTeam2: "Nuggets 113 (4-0)" }
+    ]
+  },
+]
+---
+<Layout title="Finales De Conferencia">
+  <header class="relative">
+    <a href="/Resultados" class="p-4 absolute left-0 top-0 ">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+    </a>
+    <h1 class="text-5xl font-semibold text-center pb-10 pt-2">Resultados de las Finales De Conferencia</h1>
+  </header>
+  <main class="grid grid-cols-2">
+    <section class="flex flex-col flex-wrap gap-4 justify-start items-center">
+      <p class="justify-center flex text-3xl capitalize">ESTE</p>
+      {playoffEast.map(({team1, team2, resultTeam1, resultTeam2, games}) => (
+        <PlayoffFace team1={team1} team2={team2} resultTeam1={resultTeam1} resultTeam2={resultTeam2} games={games}/>
+      ))}
+    </section>
+    <section class="flex flex-col flex-wrap gap-4 justify-start items-center">
+      <p class="justify-center flex text-3xl capitalize">OESTE</p>
+      {playoffWest.map(({team1, team2, resultTeam1, resultTeam2, games}) => (
+         <PlayoffFace team1={team1} team2={team2} resultTeam1={resultTeam1} resultTeam2={resultTeam2} games={games} />
+      ))}
+    </section>
+  </main>
+</Layout> 

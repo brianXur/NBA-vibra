@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PlayoffFace from "../../components/PlayoffFace.astro"
+
+const playoffEast = [
+{
+team1: "Denver Nuggets",
+    team2: "Miami Heat",
+    games: [
+  { gameNumber: 1, resultTeam1: 'Nuggets 104', resultTeam2: 'Heat 93 (1-0)' },
+  { gameNumber: 2, resultTeam1: 'Nuggetss 108', resultTeam2: 'Heat 111 (1-1)' },
+  { gameNumber: 3, resultTeam1: 'Heat 94', resultTeam2: 'Nuggets 109 (1-2)' },
+  { gameNumber: 4, resultTeam1: ' Heat 95', resultTeam2: 'Nuggets 108 (1-3)' },
+  { gameNumber: 5, resultTeam1: 'Nuggets 94', resultTeam2: 'Heat 89 (4-1)' },
+]}]
+---
+<Layout title="Final">
+  <header class="relative">
+    <a href="/Resultados" class="p-4 absolute left-0 top-0 ">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+    </a>
+    <h1 class="text-5xl font-semibold text-center pb-16 pt-2">Final</h1>
+  </header>
+    <section class="flex flex-col flex-wrap gap-4 justify-start items-center">
+      {playoffEast.map(({team1, team2, games}) => (
+        <PlayoffFace team1={team1} team2={team2}  games={games}/>
+      ))}
+    </section>
+    <section class="flex flex-row flex-wrap gap-4 justify-center items-center pt-10">
+      <div ><p class="text-center text-4xl pb-4">Game 1 Highlights</p><iframe width="560" height="315" src="https://www.youtube.com/embed/Y5NdoiFSpBw?si=wKx-I0QFbXgk1wnu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+        <div ><p class="text-center text-4xl pb-4">Game 2 Highlights</p><iframe width="560" height="315" src="https://www.youtube.com/embed/hJX9SnXxX2g?si=orVKXN-98Qgo6yin" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+        <div ><p class="text-center text-4xl pb-4">Game 3 Highlights</p><iframe width="560" height="315" src="https://www.youtube.com/embed/PIcYSk9mSX8?si=r9wgg71_i6pM928k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      
+      </div>
+        <div ><p class="text-center text-4xl pb-4">Game 4 Highlights</p><iframe width="560" height="315" src="https://www.youtube.com/embed/upu1O4LdPQk?si=dwaXM6zUTI1evAZu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+        <div ><p class="text-center text-4xl pb-4">Game 5 Highlights</p><iframe width="560" height="315" src="https://www.youtube.com/embed/KoeMJuI03T4?si=MhHP6YTNJLRvLWpT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      </section>
+</Layout> 

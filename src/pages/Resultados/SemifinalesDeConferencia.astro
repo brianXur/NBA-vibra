@@ -1,0 +1,88 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PlayoffFace from "../../components/PlayoffFace.astro"
+
+const playoffEast = [
+{
+    team1: "New York Knicks",
+    team2: "Miami Heat",
+    resultTeam1: 5, resultTeam2: 8 ,
+    games: [
+      { gameNumber: 1, resultTeam1: "Knicks 101", resultTeam2: "108 Heat (0-1)" },
+      { gameNumber: 2, resultTeam1: "Knicks 111", resultTeam2: "105 Heat (1-1)" },
+      { gameNumber: 3, resultTeam1: "Heat 105", resultTeam2: "86 Knicks (2-1)" },
+      { gameNumber: 4, resultTeam1: "Heat 109", resultTeam2: "101 Knicks (3-1)" },
+      { gameNumber: 5, resultTeam1: "Knicks 112", resultTeam2: "103 Heat (2-3)" },
+      { gameNumber: 6, resultTeam1: "Knicks 92", resultTeam2: "96 Heat (2-4)" }
+    ]
+  },
+  {
+    team1: "Boston Celtics",
+    team2: "Philadelphia 76ers",
+    resultTeam1: 2, resultTeam2: 3 ,
+    games: [
+      { gameNumber: 1, resultTeam1: "Celtics 115", resultTeam2: "119 76ers (0-1)" },
+      { gameNumber: 2, resultTeam1: "Celtics 121", resultTeam2: "87 76ers (1-1)" },
+      { gameNumber: 3, resultTeam1: "76ers 102", resultTeam2: "114 Celtics (1-2)" },
+      { gameNumber: 4, resultTeam1: "76ers 116", resultTeam2: "115 Celtics (2-2)" },
+      { gameNumber: 5, resultTeam1: "Celtics 103", resultTeam2: "76ers 115 (3-2)" },
+      { gameNumber: 6, resultTeam1: "76ers 86", resultTeam2: "95 Celtics (3-3)" },
+      { gameNumber: 7, resultTeam1: "Celtics 112", resultTeam2: "88 76ers (4-3)" }
+    ]
+  },
+  
+];
+
+const playoffWest = [
+{
+    team1: "Denver Nuggets",
+    team2: "Phoenix Suns",
+    resultTeam1: 1, resultTeam2: 4 ,
+    games: [
+      { gameNumber: 1, resultTeam1: "Nuggets 125", resultTeam2: "107 Suns (1-0)" },
+      { gameNumber: 2, resultTeam1: "Nuggets 97", resultTeam2: "87 Suns (2-0)" },
+      { gameNumber: 3, resultTeam1: "Suns 121", resultTeam2: "114 Nuggets (1-2)" },
+      { gameNumber: 4, resultTeam1: "Suns 129", resultTeam2: "124 Nuggets (2-2)" },
+      { gameNumber: 5, resultTeam1: "Nuggets 118", resultTeam2: "102 Suns (3-2)" },
+      { gameNumber: 6, resultTeam1: "Suns 100", resultTeam2: "125 Nuggets (2-4)" }
+    ]
+  },
+  {
+    team1: "Golden State Warriors",
+    team2: "Los Angeles Lakers",
+    resultTeam1: 6, resultTeam2: 7 ,
+    games: [
+      { gameNumber: 1, resultTeam1: "Warriors 112", resultTeam2: "117 Lakers (0-1)" },
+      { gameNumber: 2, resultTeam1: "Warriors 127", resultTeam2: "100 Lakers (1-1)" },
+      { gameNumber: 3, resultTeam1: "Lakers 127", resultTeam2: "97 Warriors (2-1)" },
+      { gameNumber: 4, resultTeam1: "Lakers 104", resultTeam2: "101 Warriors (3-1)" },
+      { gameNumber: 5, resultTeam1: "Warriors 121", resultTeam2: "106 Lakers (2-3)" },
+      { gameNumber: 6, resultTeam1: "Warriors 101", resultTeam2: "122 Lakers (2-4)" }
+    ]
+  }
+]
+---
+<Layout title="Semifinales De Conferencia">
+  <header class="relative">
+    <a href="/Resultados" class="p-4 absolute left-0 top-0 ">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+    </a>
+    <h1 class="text-5xl font-semibold text-center pb-10 pt-2">Resultados de las Semifinales De Conferencia</h1>
+  </header>
+  <main class="grid grid-cols-2">
+    <section class="flex flex-col flex-wrap gap-4 justify-start items-center">
+      <p class="justify-center flex text-3xl capitalize">ESTE</p>
+      {playoffEast.map(({team1, team2, resultTeam1, resultTeam2, games}) => (
+        <PlayoffFace team1={team1} team2={team2} resultTeam1={resultTeam1} resultTeam2={resultTeam2} games={games}/>
+      ))}
+    </section>
+    <section class="flex flex-col flex-wrap gap-4 justify-start items-center">
+      <p class="justify-center flex text-3xl capitalize">OESTE</p>
+      {playoffWest.map(({team1, team2, resultTeam1, resultTeam2, games}) => (
+         <PlayoffFace team1={team1} team2={team2} resultTeam1={resultTeam1} resultTeam2={resultTeam2} games={games} />
+      ))}
+    </section>
+  </main>
+</Layout> 

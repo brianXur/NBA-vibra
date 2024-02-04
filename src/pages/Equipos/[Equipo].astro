@@ -1,0 +1,57 @@
+---
+
+import { Image } from "astro:assets";
+import { equipos } from "../../const/navegacion";
+import Layout from "../../layouts/Layout.astro";
+import logoEquipos from "../../images/logoequipos.webp";
+export function getStaticPaths() {
+  return equipos.map(({name}) => ({params: {Equipo: name.trim().replace(" ", '').toLowerCase()}}));
+}
+
+const {Equipo} = Astro.params;
+
+const filterEquipo = equipos.find(({name}) => name.trim().replace(" ", '').toLowerCase() === Equipo)
+const name = filterEquipo?.name ?? ''
+const img = filterEquipo?.logo ?? logoEquipos
+const location = filterEquipo?.location ?? ''
+const locationImg = filterEquipo?.cityImg ?? logoEquipos
+const locationMap = filterEquipo?.hrefImg ?? ''
+const nombreEstadio = filterEquipo?.estadio ?? ''
+const imgEstadiof = filterEquipo?.estadioImgFuera ?? logoEquipos
+const imgEstadiod = filterEquipo?.estadioImgDentro ?? logoEquipos
+const palmaresAnillo = filterEquipo?.palmaresAnillo ?? ''
+const palmaresTc = filterEquipo?.palamresTc ?? ''
+
+---
+
+<Layout title={name}>
+  <header class="flex flex-col items-center justify-center gap-4 p-5 relative">
+    <a href="/Equipos" class="p-4 absolute left-0 top-0 ">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+    </svg>
+  </a>
+    <h1 class="text-3xl font-semibold">{name}</h1>
+    <Image class="size-32 object-contain" src={img} alt={`logo de el equipo ${name}`}/>
+
+  </header>
+  <section class="flex flex-col gap-3 justify-center items-center">
+    <h2 class="text-3xl">{location}</h2>
+    <div class="flex flex-row gap-4 items-center">
+      <Image class="size-72 object-contain" src={locationImg} alt={`ciudad de el equipo ${name}`}/>
+      <iframe src={locationMap} class="h-56 w-96" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+  <section class="flex flex-col gap-3 justify-center items-center">
+    <h2 class="text-3xl">{nombreEstadio}</h2>
+    <div class="flex items-center flex-row gap-3">
+    <Image class="size-72 object-contain" src={imgEstadiod} alt={`imagen del ${nombreEstadio} de ${name} por dentro`}/>
+    <Image class="size-[20.5rem] object-contain" src={imgEstadiof} alt={`imagen del ${nombreEstadio} de ${name} por fuera`}/>
+  </div>
+  </section>
+  <section class="flex flex-col gap-3 justify-center items-center pb-5">
+    <h2 class="text-3xl">Palmarés</h2>
+    <h3 class="text-2xl">{palmaresAnillo}</h3>
+    <h3 class="text-2xl">{`Título de Conferencia: ${palmaresTc}`}</h3>
+  </section>
+</Layout>

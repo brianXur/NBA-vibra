@@ -1,0 +1,58 @@
+---
+
+import { Image } from "astro:assets";
+import { equipos } from "../../const/navegacion";
+import Layout from "../../layouts/Layout.astro";
+import logoEquipos from "../../images/logoequipos.webp";
+export function getStaticPaths() {
+  return equipos.map(({name}) => ({params: {Equipo: name}}));
+}
+
+const {Equipo} = Astro.params;
+
+const filterEquipo = equipos.find(({name}) => name === Equipo)
+const img = filterEquipo?.logo ?? logoEquipos
+const camiseta = filterEquipo?.camisetaCorta ?? ``
+const camisetaLarga = filterEquipo?.camisetaLarga ?? ``
+const chaqueta = filterEquipo?.chaqueta ?? ``
+const pantalon = filterEquipo?.pantalon ?? ``
+const pantalonLargo = filterEquipo?.pantalonLargo ?? ``
+---
+
+<Layout title={Equipo}>
+  <header class="flex flex-col items-center justify-center gap-4 p-10 relative">
+    <a href="/Equipacion" class="p-4 absolute left-0 top-0 ">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+    </svg>
+  </a>
+    <h1 class="text-3xl font-semibold">{Equipo}</h1>
+    <Image class="size-32 object-contain" src={img} alt={`logo de el equipo ${Equipo}`}/>
+  </header>
+  <section class="flex flex-row items-center gap-4 justify-center flex-wrap">
+    <article>
+      <h1 class="text-2xl text-center pb-2">Camiseta de Juego</h1>
+      <img src={camiseta} alt={`camiseta de ${Equipo}`} class="rounded-2xl w-72 h-96 object-cover object-top"/>
+    </article>
+    <article>
+      <h1 class="text-2xl text-center pb-2">Pantalones de Juego</h1>
+      <img src={pantalon} alt={`pantalon de ${Equipo}`} class="rounded-2xl w-72 h-96 object-cover object-top"/>
+    </article>
+    <article>
+      <h1 class="text-2xl text-center pb-2">Camiseta Manga Corta</h1>
+      <img src={camisetaLarga} alt={`camiseta de manga corta de  ${Equipo}`} class="rounded-2xl w-72 h-96 object-cover object-top"/>
+    </article>
+    <article>
+      <h1 class="text-2xl text-center pb-2">Pantalones Largos</h1>
+      {typeof pantalonLargo !== 'string' ?
+      <Image src={pantalonLargo} alt={`pantalon largo de ${Equipo}`} class="rounded-2xl w-72 h-96 object-contain bg-white"/> : 
+      <img src={pantalonLargo} alt={`pantalon largo de ${Equipo}`} class="rounded-2xl w-72 h-96 object-cover object-top"/>
+    } 
+    </article>
+    <article>
+      <h1 class="text-2xl text-center pb-2">Chaqueta/Sudadera</h1>
+      <img src={chaqueta} alt={`chaqueta de ${Equipo}`} class="rounded-2xl w-72 h-96 object-cover object-top"/>
+    </article>
+  </section>
+  
+</Layout>
