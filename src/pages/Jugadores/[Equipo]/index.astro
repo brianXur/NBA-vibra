@@ -25,7 +25,7 @@ const img = filterEquipo?.logo ?? logoEquipos
   </header>
   <section class="flex flex-row items-center gap-4 justify-center flex-wrap">
     {filterPlayers?.map(({nombreCompleto, posicion, playerPicture}) => (
-      <a href={`/Jugadores/${Equipo.toLowerCase()}/${nombreCompleto}`} class="rounded-2xl bg-slate-800 justify-center items-center flex flex-col px-4 hover:bg-slate-600 hover:ring-2 hover:ring-cyan-600">
+      <a href={`/Jugadores/${Equipo}/${nombreCompleto}`} class="rounded-2xl bg-slate-800 justify-center items-center flex flex-col px-4 hover:bg-slate-600 hover:ring-2 hover:ring-cyan-600">
         <p class="text-center pt-4 text-2xl font-bold">{`${nombreCompleto}`}</p>
         <p class="text-center font-semibold text-1xl">{`${posicion}`}</p>
         <img class="w-44 h-auto object-contain rounded-2xl" src={playerPicture}/>

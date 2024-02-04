@@ -5,7 +5,7 @@ import Layout from "../../../layouts/Layout.astro";
 import logoEquipos from "../../../images/logoequipos.webp";
 import BackHome from "../../../components/BackHome.astro";
 export function getStaticPaths() {  
-  return players.map(({trim, equipo}) => ({params: {Jugador: trim, Equipo: equipo.toLowerCase()}}));
+  return players.map(({trim, equipo}) => ({params: {Jugador: trim, Equipo: equipo.toUpperCase()}}));
 }
 
 const {Jugador, Equipo} = Astro.params;
